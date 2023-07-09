@@ -1,0 +1,34 @@
+{
+  "name": "mantine-wrap",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/mantine-wrap/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/mantine-wrap",
+        "main": "libs/mantine-wrap/src/index.ts",
+        "tsConfig": "libs/mantine-wrap/tsconfig.lib.json",
+        "assets": ["libs/mantine-wrap/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/mantine-wrap/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/libs/mantine-wrap"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/libs/mantine-wrap"
+      }
+    }
+  },
+  "tags": []
+}

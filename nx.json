@@ -73,5 +73,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "defaultProject": "host"
 }

@@ -1,0 +1,59 @@
+{
+  "hash": "e4999404",
+  "browserHash": "56ef6e95",
+  "optimized": {
+    "react": {
+      "src": "../../../../../../../../../../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "96b7c408",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../../../../../../../../../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "71851972",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../../../../../../../../../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "62c828e0",
+      "needsInterop": true
+    },
+    "react-error-boundary": {
+      "src": "../../../../../../../../../../../node_modules/react-error-boundary/dist/react-error-boundary.esm.js",
+      "file": "react-error-boundary.js",
+      "fileHash": "2d2da0ce",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../../../../../../../../../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "5d1e9fea",
+      "needsInterop": false
+    },
+    "@emotion/react/jsx-dev-runtime": {
+      "src": "../../../../../../../../../../../node_modules/@emotion/react/jsx-dev-runtime/dist/emotion-react-jsx-dev-runtime.browser.esm.js",
+      "file": "@emotion_react_jsx-dev-runtime.js",
+      "fileHash": "f2c7f26f",
+      "needsInterop": false
+    },
+    "react-dom": {
+      "src": "../../../../../../../../../../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "68a69c83",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-ZNMSLF3Z": {
+      "file": "chunk-ZNMSLF3Z.js"
+    },
+    "chunk-B6K3YRQJ": {
+      "file": "chunk-B6K3YRQJ.js"
+    },
+    "chunk-V4RESS5D": {
+      "file": "chunk-V4RESS5D.js"
+    }
+  }
+}

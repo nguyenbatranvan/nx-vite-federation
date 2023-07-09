@@ -1,0 +1,68 @@
+{
+  "hash": "eb3e738e",
+  "browserHash": "e8abdac0",
+  "optimized": {
+    "react": {
+      "src": "../../../../../../../../../../../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "123ab562",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../../../../../../../../../../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "083b01ea",
+      "needsInterop": true
+    },
+    "@loadable/component": {
+      "src": "../../../../../../../../../../../../node_modules/@loadable/component/dist/loadable.esm.js",
+      "file": "@loadable_component.js",
+      "fileHash": "7bbb40e5",
+      "needsInterop": false
+    },
+    "react-dom/client": {
+      "src": "../../../../../../../../../../../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "d098cbe3",
+      "needsInterop": true
+    },
+    "react-error-boundary": {
+      "src": "../../../../../../../../../../../../node_modules/react-error-boundary/dist/react-error-boundary.esm.js",
+      "file": "react-error-boundary.js",
+      "fileHash": "4299b468",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../../../../../../../../../../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "1d557f86",
+      "needsInterop": false
+    },
+    "@emotion/react/jsx-dev-runtime": {
+      "src": "../../../../../../../../../../../../node_modules/@emotion/react/jsx-dev-runtime/dist/emotion-react-jsx-dev-runtime.browser.esm.js",
+      "file": "@emotion_react_jsx-dev-runtime.js",
+      "fileHash": "77337425",
+      "needsInterop": false
+    },
+    "react-dom": {
+      "src": "../../../../../../../../../../../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "a81aa062",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-FNMZVDZ6": {
+      "file": "chunk-FNMZVDZ6.js"
+    },
+    "chunk-B7UOFUZV": {
+      "file": "chunk-B7UOFUZV.js"
+    },
+    "chunk-E2ZV4NOO": {
+      "file": "chunk-E2ZV4NOO.js"
+    },
+    "chunk-BRX3YRNR": {
+      "file": "chunk-BRX3YRNR.js"
+    }
+  }
+}
