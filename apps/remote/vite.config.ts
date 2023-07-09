@@ -11,7 +11,7 @@ const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
 export default defineConfig({
   // cacheDir: 'http://localhost:4002/node_modules/.vite/host/deps',
   // cacheDir: '../../cache/.vite/deps',
-  cacheDir:join('../../@fs' + path.dirname(__filename), '/83748/.vite'),
+  cacheDir: join('../../@fs' + path.dirname(__filename), '/83748/.vite'),
   server: {
     port: 4200,
     host: 'localhost',
@@ -31,6 +31,10 @@ export default defineConfig({
         "./AppHost": join(__dirname, "/src/app/app")
       },
       shared: {
+        // '@mantine/core': {},
+        // '@mantine/hooks': {},
+        // '@mantine/utils': {},
+        // '@mantine/styles': {},
         'react/jsx-runtime': {
           packagePath: jsxRuntimePath,
         },
@@ -67,5 +71,5 @@ export default defineConfig({
     target: "esnext",
     minify: false,
     cssCodeSplit: false,
-  }
+  },
 });
