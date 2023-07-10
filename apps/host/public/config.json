@@ -1,4 +1,4 @@
 {
   "remoteURL": "http://localhost:4300/assets/remoteEntry.js",
-  "remoteSharedURL": "http://localhost:5000/assets/remoteEntry.js"
+  "remoteSharedURL": "http://localhost:5001/assets/remoteEntry.js"
 }

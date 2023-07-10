@@ -3,7 +3,7 @@ import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import federation from "@originjs/vite-plugin-federation";
 import {join} from "path"
-import {resolveVite} from "../../libs/shared/utils/src/index";
+import {resolveVite} from "../../libs/shared/utils/src";
 export default defineConfig({
   resolve:resolveVite,
   cacheDir: join('../../../.vite_cache/.vite/host'),

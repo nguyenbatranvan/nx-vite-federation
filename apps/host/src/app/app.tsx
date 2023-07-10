@@ -10,7 +10,7 @@ const AppHost = loadable(() => import("remoteApp/AppHost").catch(), {
 })
 
 export function App() {
-  const {bears,increasePopulation}=useCounter();
+  const {bears, increasePopulation} = useCounter();
   return (<>
       <div role="navigation">
         <ul>
