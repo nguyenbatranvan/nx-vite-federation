@@ -1,13 +1,15 @@
 /// <reference types="vitest" />
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import viteTsConfigPaths from 'vite-tsconfig-paths';
 import federation from '@originjs/vite-plugin-federation'
 import {join} from "path";
 import * as process from "process";
+import {resolveVite} from "../../libs/shared/utils/src/index";
+
 
 const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
 export default defineConfig({
+  resolve: resolveVite,
   cacheDir: join('../../../.vite_cache/.vite/remote'),
   server: {
     port: 4200,
@@ -27,11 +29,19 @@ export default defineConfig({
       exposes: {
         "./AppHost": join(__dirname, "/src/app/app")
       },
+      remotes: {
+        // remoteShared:{
+        //   external: `Promise.resolve(window.remoteSharedURL)`,
+        //   from: 'vite',
+        //   externalType: 'promise',
+        // }
+        remoteShared: {
+          external: `Promise.resolve(window.remoteSharedURL)`,
+          from: 'vite',
+          externalType: 'promise',
+        }
+      },
       shared: {
-        // '@mantine/core': {},
-        // '@mantine/hooks': {},
-        // '@mantine/utils': {},
-        // '@mantine/styles': {},
         'react/jsx-runtime': {
           packagePath: jsxRuntimePath,
         },
@@ -39,13 +49,12 @@ export default defineConfig({
           version: '18.2.0'
         },
         'react-dom': {},
-        zustand:{
-        }
+        zustand: {}
       }
     }),
-    viteTsConfigPaths({
-      root: '../../',
-    }),
+    // viteTsConfigPaths({
+    //   root: '../../',
+    // }),
   ],
 
   // Uncomment this if you are using workers.

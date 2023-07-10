@@ -3,14 +3,14 @@ import {Link, Route, Routes} from "react-router-dom";
 import React from "react";
 import {Box, Button} from "@mantine/core";
 import loadable from "@loadable/component";
-import {useCounter} from "@module-fd/shared/mantine-wrapper";
+import {useCounter} from "remoteShared/Hooks";
 
 const AppHost = loadable(() => import("remoteApp/AppHost").catch(), {
   fallback: <p>...</p>
 })
 
 export function App() {
-  const {bears} = useCounter();
+  const {bears,increasePopulation}=useCounter();
   return (<>
       <div role="navigation">
         <ul>
@@ -25,7 +25,7 @@ export function App() {
           </li>
         </ul>
       </div>
-      <Button>
+      <Button onClick={increasePopulation}>
         Button Host {bears}
       </Button>
 

@@ -1,2 +1,2 @@
 export {MantineWrap} from "./lib/mantine-wrap";
-export * from "./lib/use-counter";
+export {ConfigWrapper} from "./lib/config-wrapper"
