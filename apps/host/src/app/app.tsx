@@ -1,12 +1,17 @@
-import loadable from "@loadable/component";
 import {ErrorBoundary} from "react-error-boundary";
-import { Link, Route, Routes} from "react-router-dom";
-import React from "react";
-import AppHost from "remoteApp/AppHost"
-// const AppHost = loadable(() => import("remoteApp/AppHost").catch(), {
-//   fallback: <p>...</p>
-// })
+import {Link, Route, Routes} from "react-router-dom";
+import React, {useEffect} from "react";
+import {Box, Button} from "@mantine/core";
+import loadable from "@loadable/component";
+import {useCounter} from "@module-fd/shared/mantine-wrapper";
+
+const AppHost = loadable(() => import("remoteApp/AppHost").catch(), {
+  fallback: <p>...</p>
+})
+
 export function App() {
+
+  const {bears} = useCounter();
   return (<>
       <div role="navigation">
         <ul>
@@ -21,12 +26,24 @@ export function App() {
           </li>
         </ul>
       </div>
+      <Button>
+        Button Host {bears}
+      </Button>
 
       <Routes>
         <Route path={"hi/*"} element={
           <ErrorBoundary fallback={<p>App Host</p>}>
+            <Box sx={{
+              margin: 10,
+              width: 400,
+              padding: 10,
+              border: '5px dashed red'
+            }}>
+              App Remote
+              <AppHost/>
 
-            <AppHost/>
+            </Box>
+
 
           </ErrorBoundary>
         }/>

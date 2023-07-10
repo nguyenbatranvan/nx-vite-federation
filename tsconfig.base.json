@@ -11,13 +11,33 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@module-fd/mantine-wrap": ["libs/mantine-wrap/src/index.ts"]
+      "@module-fd/mantine-wrap": [
+        "libs/mantine-wrap/src/index.ts"
+      ],
+      "@module-fd/shared/custom-components": [
+        "libs/shared/custom-components/src/index.ts"
+      ],
+      "@module-fd/shared/custom-theme": [
+        "libs/shared/custom-theme/src/index.ts"
+      ],
+      "@module-fd/shared/mantine-wrapper": [
+        "libs/shared/mantine-wrapper/src/index.ts"
+      ],
+      "@module-fd/shared/models": [
+        "libs/shared/models/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

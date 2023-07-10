@@ -5,13 +5,10 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import federation from '@originjs/vite-plugin-federation'
 import {join} from "path";
 import * as process from "process";
-import * as path from "path";
 
 const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
 export default defineConfig({
-  // cacheDir: 'http://localhost:4002/node_modules/.vite/host/deps',
-  // cacheDir: '../../cache/.vite/deps',
-  cacheDir: join('../../@fs' + path.dirname(__filename), '/83748/.vite'),
+  cacheDir: join('../../../.vite_cache/.vite/remote'),
   server: {
     port: 4200,
     host: 'localhost',
@@ -41,12 +38,14 @@ export default defineConfig({
         react: {
           version: '18.2.0'
         },
-        'react-dom': {}
+        'react-dom': {},
+        zustand:{
+        }
       }
     }),
-    // viteTsConfigPaths({
-    //   root: '../../',
-    // }),
+    viteTsConfigPaths({
+      root: '../../',
+    }),
   ],
 
   // Uncomment this if you are using workers.

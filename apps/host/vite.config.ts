@@ -1,14 +1,30 @@
 /// <reference types="vitest" />
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
-// import viteTsConfigPaths from 'vite-tsconfig-paths';
 import federation from "@originjs/vite-plugin-federation";
 import {join} from "path"
 import path from "path";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import data from "../../tsconfig.base.json";
 
+const paths = data.compilerOptions.paths;
+
+const resolve = {
+  alias: Object.keys(paths).map(key => {
+    if (key.includes("*")) {
+      return {
+        find: key.split("*")[0], replacement: path.join(process.cwd(), paths[key][0].split("*")[0])
+      };
+    }
+    return {
+      find: key, replacement: path.join(process.cwd(), paths[key][0])
+    };
+  })
+};
 export default defineConfig({
-
-  cacheDir: join('../../../@fs' + path.dirname(__filename), '/83748/.vite'),
+  resolve,
+  cacheDir: join('../../../.vite_cache/.vite/host'),
   server: {
     strictPort: false,
     port: 3000,
@@ -18,12 +34,19 @@ export default defineConfig({
     }
   },
   plugins: [
-//    viteTsConfigPaths({
-    //      root: '../../',
-    //    }),
+    // viteTsConfigPaths({
+    //   root: '../../',
+    // }),
 
     federation({
       name: 'app',
+      // remotes: {
+      //   remoteApp: {
+      //     external: `Promise.resolve(window.remoteURL)`,
+      //     from: 'vite',
+      //     externalType: 'promise',
+      //   }
+      // },
       // remotes: [
       //   {
       //     remoteApp: {
@@ -37,10 +60,6 @@ export default defineConfig({
         remoteApp: 'http://localhost:4300/assets/remoteEntry.js',
       },
       shared: {
-        // '@mantine/core': {},
-        // '@mantine/hooks': {},
-        // '@mantine/utils': {},
-        // '@mantine/styles': {},
         react: {
           version: '^18.2.0',
           requiredVersion: '^18.2.0'
@@ -48,32 +67,17 @@ export default defineConfig({
         'react-dom': {
           version: '^18.2.0'
         },
+        zustand:{
+          version:'^4.3.9'
+        }
       }
     }),
-    react(),
-
+    react()
   ],
-
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [
-  //    viteTsConfigPaths({
-  //      root: '../../',
-  //    }),
-  //  ],
-  // },
   build: {
-    modulePreload: true,
+    modulePreload: false,
     target: "esnext",
     minify: false,
     cssCodeSplit: false,
-  },
-  // test: {
-  //   globals: true,
-  //   cache: {
-  //     dir: '../../node_modules/.vitest',
-  //   },
-  //   environment: 'jsdom',
-  //   include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-  // },
+  }
 });

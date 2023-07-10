@@ -1,0 +1,16 @@
+{
+  "name": "shared-custom-theme",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/custom-theme/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/custom-theme/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}
