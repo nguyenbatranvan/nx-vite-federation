@@ -24,6 +24,8 @@ if (process.platform === 'win32') {
 }
 const projects = args['remotes']
 const app = args['app'];
+const target = args['t'] || 'serve';
+console.log('sss',target)
 // if (!projects) {
 //   console.log(chalk.red('requires a project, example:'), chalk.bgCyan.white('npm run federation project=remote'));
 //   return;
@@ -32,15 +34,20 @@ if (!app) {
   console.log(chalk.red('requires a app, example:'), chalk.bgCyan.white('npm run federation app=host'));
   return;
 }
+if (target !== 'preview' && target !== 'serve') {
+  console.log(chalk.red('Invalid target! Target is "serve"|"preview". Example:'),
+    chalk.bgCyan.white('npm run federation app=host t=preview'));
+  return;
+}
 if (projects === '*' || !projects) {
   const json = JSON.parse(fs.readFileSync(join(__dirname, '../apps/' + app + '/federation.json')));
   const remotes = json.remotes;
-  spawn('nx', ['serve', app], {stdio: 'inherit'});
+  spawn('nx', [target, app], {stdio: 'inherit'});
   remotes.forEach(item => {
     spawn('nx', ['preview', item], {stdio: 'inherit'});
   })
 } else {
-  spawn('nx', ['serve', app], {stdio: 'inherit'});
+  spawn('nx', [target, app], {stdio: 'inherit'});
   projects.split(',').forEach(item => {
     spawn('nx', ['preview', item.trim()], {stdio: 'inherit'});
   })

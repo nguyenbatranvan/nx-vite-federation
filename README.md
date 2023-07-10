@@ -26,3 +26,4 @@ or
 
 - `app` is name project host
 - `remotes` is remote links
+- `t` is target with result `serve` | `preview`, default is `serve`
