@@ -1,6 +1,6 @@
 // import {Route, Routes, Link, BrowserRouter} from 'react-router-dom';
 import {Button} from "@mantine/core";
-import React, {useEffect} from "react";
+import React from "react";
 import {BrowserRouter, Link, Navigate, Route, Routes} from "react-router-dom";
 import {MantineWrap} from "@module-fd/shared/mantine-wrapper";
 import {useCounter} from "remoteShared/Hooks";
@@ -8,12 +8,6 @@ import {CustomButton} from "@module-fd/shared/custom-components";
 
 export function AppHost() {
   const {bears, increasePopulation} = useCounter();
-  // useEffect(()=>{
-  //   return ()=>{
-  //     console.log('desstroy')
-  //     reset();
-  //   }
-  // },[])
   return (
     <MantineWrap>
       {/*<NxWelcome title="remote"/>*/}
