@@ -34,7 +34,11 @@
       "@module-fd/shared/models": [
         "libs/shared/models/src/index.ts"
       ]
-    }
+    },
+    "typeRoots": [
+    ],
+    "types": [
+    ]
   },
   "exclude": [
     "node_modules",

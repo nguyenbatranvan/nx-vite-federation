@@ -1,6 +1,6 @@
 import {ErrorBoundary} from "react-error-boundary";
 import {Link, Route, Routes} from "react-router-dom";
-import React, {useEffect} from "react";
+import React from "react";
 import {Box, Button} from "@mantine/core";
 import loadable from "@loadable/component";
 import {useCounter} from "@module-fd/shared/mantine-wrapper";
@@ -10,7 +10,6 @@ const AppHost = loadable(() => import("remoteApp/AppHost").catch(), {
 })
 
 export function App() {
-
   const {bears} = useCounter();
   return (<>
       <div role="navigation">
