@@ -5,7 +5,7 @@ import federation from '@originjs/vite-plugin-federation'
 import {join} from "path";
 import * as process from "process";
 import {resolveVite} from "../../libs/shared/utils/src/index";
-
+import DynamicPublicDirectory from "vite-multiple-assets";
 
 const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
 export default defineConfig({
@@ -23,6 +23,7 @@ export default defineConfig({
 
   plugins: [
     react(),
+    DynamicPublicDirectory(["libs/shared/assets"]),
     federation({
       name: 'remote-host',
       filename: "remoteEntry.js",
@@ -45,9 +46,7 @@ export default defineConfig({
         'react/jsx-runtime': {
           packagePath: jsxRuntimePath,
         },
-        react: {
-          version: '18.2.0'
-        },
+        react: {},
         'react-dom': {},
         zustand: {}
       }

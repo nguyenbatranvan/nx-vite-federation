@@ -20,6 +20,7 @@ export function AppHost() {
       </CustomButton>
 
       <BrowserRouter>
+        <img width={100} alt={"image test"} src={"/img.png"}/>
         <div role="navigation">
           <ul>
             <li>

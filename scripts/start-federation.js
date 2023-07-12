@@ -2,7 +2,25 @@ const {spawn} = require('node:child_process');
 const chalk = require('chalk');
 const fs = require('node:fs');
 const {join} = require("path");
-console.log(__dirname)
+const __remotes = [];
+
+function getDeepRemotes(remotes) {
+  try {
+    for (const item in remotes) {
+      __remotes.push(remotes[item]);
+      const jsonRemote = JSON.parse(fs.readFileSync(join(__dirname, '../apps/' + remotes[item] + '/federation.json')))
+      if (jsonRemote.remotes && jsonRemote.remotes.length) {
+        __remotes.push(...jsonRemote.remotes);
+        getDeepRemotes(jsonRemote.remotes)
+      } else {
+        break;
+      }
+    }
+
+  } catch (e) {
+    console.log(chalk.yellow(e.message))
+  }
+}
 
 function getArgs() {
   const args = {};
@@ -22,14 +40,8 @@ let cmd = 'npm';
 if (process.platform === 'win32') {
   cmd = 'npm.cmd';    // https://github.com/nodejs/node/issues/3675
 }
-const projects = args['remotes']
-const app = args['app'];
-const target = args['t'] || 'serve';
-console.log('sss',target)
-// if (!projects) {
-//   console.log(chalk.red('requires a project, example:'), chalk.bgCyan.white('npm run federation project=remote'));
-//   return;
-// }
+const {remotes, app} = args
+const target = args['t']||'serve';
 if (!app) {
   console.log(chalk.red('requires a app, example:'), chalk.bgCyan.white('npm run federation app=host'));
   return;
@@ -39,16 +51,20 @@ if (target !== 'preview' && target !== 'serve') {
     chalk.bgCyan.white('npm run federation app=host t=preview'));
   return;
 }
-if (projects === '*' || !projects) {
+console.log('t', target)
+
+if (remotes === '*' || !remotes) {
   const json = JSON.parse(fs.readFileSync(join(__dirname, '../apps/' + app + '/federation.json')));
-  const remotes = json.remotes;
+  getDeepRemotes()
+  getDeepRemotes(json.remotes);
   spawn('nx', [target, app], {stdio: 'inherit'});
-  remotes.forEach(item => {
+  [...new Set(__remotes)].forEach(item => {
     spawn('nx', ['preview', item], {stdio: 'inherit'});
   })
 } else {
+  getDeepRemotes(remotes.split(','))
   spawn('nx', [target, app], {stdio: 'inherit'});
-  projects.split(',').forEach(item => {
+  [...new Set(__remotes)].forEach(item => {
     spawn('nx', ['preview', item.trim()], {stdio: 'inherit'});
   })
 }

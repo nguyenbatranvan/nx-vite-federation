@@ -1,6 +1,5 @@
 {
   "remotes": [
-    "remote",
-    "remote-shared"
+    "remote"
   ]
 }

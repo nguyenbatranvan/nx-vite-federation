@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 import federation from "@originjs/vite-plugin-federation"
 import {join} from "path";
-
+import process from "process";
+const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
 export default defineConfig({
   cacheDir: '../../../vite_cache/.vite/remote-shared',
 
@@ -19,7 +20,9 @@ export default defineConfig({
   },
 
   plugins: [
-    react(),
+    react({
+      jsxRuntime:'classic'
+    }),
     federation({
       name: 'remote-shared',
       filename: 'remoteEntry.js',
@@ -27,9 +30,18 @@ export default defineConfig({
         "./Hooks": join(__dirname, "/src/hooks/index")
       },
       shared: {
-        zustand: {},
-        react: {},
-        "react-dom": {}
+        'react/jsx-runtime': {
+          packagePath: jsxRuntimePath,
+        },
+        zustand: {
+          import: false
+        },
+        react: {
+          import:false
+        },
+        "react-dom": {
+          import:false
+        }
       }
     }),
     viteTsConfigPaths({

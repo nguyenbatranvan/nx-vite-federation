@@ -4,8 +4,12 @@ import react from '@vitejs/plugin-react';
 import federation from "@originjs/vite-plugin-federation";
 import {join} from "path"
 import {resolveVite} from "../../libs/shared/utils/src";
+import process from "process";
+import DynamicPublicDirectory from "vite-multiple-assets";
+
+const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
 export default defineConfig({
-  resolve:resolveVite,
+  resolve: resolveVite,
   cacheDir: join('../../../.vite_cache/.vite/host'),
   server: {
     strictPort: false,
@@ -19,7 +23,7 @@ export default defineConfig({
     // viteTsConfigPaths({
     //   root: '../../',
     // }),
-
+    DynamicPublicDirectory(["libs/shared/assets"]),
     federation({
       name: 'app',
       remotes: {
@@ -28,7 +32,7 @@ export default defineConfig({
           from: 'vite',
           externalType: 'promise',
         },
-        remoteShared:{
+        remoteShared: {
           external: `Promise.resolve(window.remoteSharedURL)`,
           from: 'vite',
           externalType: 'promise',
@@ -48,18 +52,15 @@ export default defineConfig({
       // },
       shared: {
         react: {
-          version: '^18.2.0',
-          requiredVersion: '^18.2.0'
         },
         'react-dom': {
-          version: '^18.2.0'
         },
-        zustand:{
-          version:'^4.3.9'
+        zustand: {
         }
       }
     }),
-    react()
+    react({
+    })
   ],
   build: {
     modulePreload: false,
