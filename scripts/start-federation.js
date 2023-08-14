@@ -41,7 +41,7 @@ if (process.platform === 'win32') {
   cmd = 'npm.cmd';    // https://github.com/nodejs/node/issues/3675
 }
 const {remotes, app} = args
-const target = args['t']||'serve';
+const target = args['t'] || 'serve';
 if (!app) {
   console.log(chalk.red('requires a app, example:'), chalk.bgCyan.white('npm run federation app=host'));
   return;
@@ -57,14 +57,14 @@ if (remotes === '*' || !remotes) {
   const json = JSON.parse(fs.readFileSync(join(__dirname, '../apps/' + app + '/federation.json')));
   getDeepRemotes()
   getDeepRemotes(json.remotes);
-  spawn('nx', [target, app], {stdio: 'inherit'});
+  spawn('nx', [target, app], {stdio: 'inherit', shell: true});
   [...new Set(__remotes)].forEach(item => {
-    spawn('nx', ['preview', item], {stdio: 'inherit'});
+    spawn('nx', ['preview', item], {stdio: 'inherit', shell: true});
   })
 } else {
   getDeepRemotes(remotes.split(','))
-  spawn('nx', [target, app], {stdio: 'inherit'});
+  spawn('nx', [target, app], {stdio: 'inherit', shell: true});
   [...new Set(__remotes)].forEach(item => {
-    spawn('nx', ['preview', item.trim()], {stdio: 'inherit'});
+    spawn('nx', ['preview', item.trim()], {stdio: 'inherit', shell: true});
   })
 }
