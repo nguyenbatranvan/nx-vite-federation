@@ -11,7 +11,7 @@ export function AppHost() {
   return (
     <MantineWrap>
       {/*<NxWelcome title="remote"/>*/}
-      <h1>Remote app, bears is {bears}</h1>
+      <h1>Remote app 22, bears is {bears}</h1>
       <Button onClick={increasePopulation}>
         Set Counter Remote
       </Button>

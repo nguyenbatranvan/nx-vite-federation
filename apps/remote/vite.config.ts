@@ -48,7 +48,8 @@ export default defineConfig({
         },
         react: {},
         'react-dom': {},
-        zustand: {}
+        zustand: {
+        }
       }
     }),
     // viteTsConfigPaths({

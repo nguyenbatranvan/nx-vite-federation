@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/remote-shared"
@@ -16,7 +18,8 @@
           "mode": "development"
         },
         "production": {
-          "mode": "production"
+          "mode": "production",
+          "watch": true
         }
       }
     },
@@ -54,7 +57,9 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/remote-shared"],
+      "outputs": [
+        "coverage/apps/remote-shared"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/remote-shared"
@@ -62,9 +67,13 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/remote-shared/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/remote-shared/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "serve-static": {
