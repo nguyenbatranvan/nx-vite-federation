@@ -7,7 +7,6 @@ import {getPackagePath, resolveVite} from "../../libs/shared/utils/src";
 import DynamicPublicDirectory from "vite-multiple-assets";
 
 
-
 // console.log(join(process.cwd(),'/libs/shared/state/src/index.ts'))
 export default defineConfig({
   resolve: resolveVite,
@@ -19,6 +18,9 @@ export default defineConfig({
     fs: {
       strict: true
     }
+  },
+  preview: {
+    port: 3000
   },
   plugins: [
     // viteTsConfigPaths({
@@ -54,14 +56,13 @@ export default defineConfig({
       shared: {
         react: {
           version: '18.2.0',
-          packagePath:getPackagePath("/node_modules/react/index.js")
+          packagePath: getPackagePath("/node_modules/react/index.js")
         },
         'react-dom': {
-          version:'18.2.0',
-          packagePath:getPackagePath("/node_modules/react-dom/index.js")
+          version: '18.2.0',
+          packagePath: getPackagePath("/node_modules/react-dom/index.js")
         },
-        zustand: {
-        },
+        zustand: {},
         'react/jsx-runtime': {
           packagePath: getPackagePath("/node_modules/react/jsx-runtime.js"),
           version: '18.2.0'
