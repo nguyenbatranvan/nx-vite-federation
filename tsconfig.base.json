@@ -27,6 +27,7 @@
         "libs/shared/mantine-wrapper/src/index.ts"
       ],
       "@module-fd/shared/models": ["libs/shared/models/src/index.ts"],
+      "@module-fd/shared/state": ["libs/shared/state/src/index.ts"],
       "@module-fd/shared/utils": ["libs/shared/utils/src/index.ts"]
     },
     "typeRoots": ["./types", "./node_modules/@types", "./node_modules"],

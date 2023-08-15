@@ -5,7 +5,8 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 import federation from "@originjs/vite-plugin-federation"
 import {join} from "path";
 import process from "process";
-const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
+import {getPackagePath} from "../../libs/shared/utils/src";
+
 export default defineConfig({
   cacheDir: '../../../vite_cache/.vite/remote-shared',
 
@@ -21,7 +22,7 @@ export default defineConfig({
 
   plugins: [
     react({
-      jsxRuntime:'classic'
+      jsxRuntime: 'classic'
     }),
     federation({
       name: 'remote-shared',
@@ -30,18 +31,13 @@ export default defineConfig({
         "./Hooks": join(__dirname, "/src/hooks/index")
       },
       shared: {
-        'react/jsx-runtime': {
-          packagePath: jsxRuntimePath,
+        'react/jsx-runtime': {},
+        zustand: {},
+        'shared-state': {
+          packagePath: getPackagePath('/libs/shared/state/src/index.ts')
         },
-        zustand: {
-          import: false
-        },
-        react: {
-          import:false
-        },
-        "react-dom": {
-          import:false
-        }
+        react: {},
+        "react-dom": {}
       }
     }),
     viteTsConfigPaths({

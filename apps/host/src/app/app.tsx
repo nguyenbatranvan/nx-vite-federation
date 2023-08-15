@@ -4,15 +4,22 @@ import React from "react";
 import {Box, Button} from "@mantine/core";
 import loadable from "@loadable/component";
 import {useCounter} from "remoteShared/Hooks";
+import {useBearStore} from "shared-state";
 
-const AppHost = loadable(() => import("remoteApp/AppHost").catch(), {
+
+const AppHost = loadable(() => import("remoteApp/AppHost"), {
   fallback: <p>...</p>
 })
 
 export function App() {
+  const {count, increasePopulation: changeCount} = useBearStore()
   const {bears, increasePopulation} = useCounter();
   return (<>
       <div role="navigation">
+        <h1>Count: {count}</h1>
+        <Button onClick={changeCount}>
+          Change Count
+        </Button>
         <ul>
           <li>
             <Link to="/">Home</Link>

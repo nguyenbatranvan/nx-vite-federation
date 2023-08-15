@@ -46,10 +46,12 @@ export default defineConfig({
         'react/jsx-runtime': {
           packagePath: jsxRuntimePath,
         },
+        'shared-state': {
+          packagePath: join(process.cwd(), '/libs/shared/state/src/index.ts')
+        },
         react: {},
         'react-dom': {},
-        zustand: {
-        }
+        zustand: {}
       }
     }),
     // viteTsConfigPaths({

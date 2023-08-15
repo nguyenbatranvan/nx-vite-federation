@@ -3,11 +3,12 @@ import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import federation from "@originjs/vite-plugin-federation";
 import {join} from "path"
-import {resolveVite} from "../../libs/shared/utils/src";
-import process from "process";
+import {getPackagePath, resolveVite} from "../../libs/shared/utils/src";
 import DynamicPublicDirectory from "vite-multiple-assets";
 
-const jsxRuntimePath = join(process.cwd(), '/node_modules/react/jsx-runtime.js')
+
+
+// console.log(join(process.cwd(),'/libs/shared/state/src/index.ts'))
 export default defineConfig({
   resolve: resolveVite,
   cacheDir: join('../../../.vite_cache/.vite/host'),
@@ -52,18 +53,29 @@ export default defineConfig({
       // },
       shared: {
         react: {
+          version: '18.2.0',
+          packagePath:getPackagePath("/node_modules/react/index.js")
         },
         'react-dom': {
+          version:'18.2.0',
+          packagePath:getPackagePath("/node_modules/react-dom/index.js")
         },
         zustand: {
+        },
+        'react/jsx-runtime': {
+          packagePath: getPackagePath("/node_modules/react/jsx-runtime.js"),
+          version: '18.2.0'
+        },
+        'shared-state': {
+          version: '0.0.0',
+          packagePath: getPackagePath("/libs/shared/state/src/index.ts")
         }
       }
     }),
-    react({
-    })
+    react({})
   ],
   build: {
-    modulePreload: false,
+    modulePreload: true,
     target: "esnext",
     minify: false,
     cssCodeSplit: false,
