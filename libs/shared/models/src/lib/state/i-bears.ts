@@ -1,5 +1,6 @@
 export interface IBears {
   count: number;
-  increasePopulation: (state: IBears) => void;
+  increasePopulation: () => void;
   removeAllBears: () => void;
+  reset:()=>void;
 }

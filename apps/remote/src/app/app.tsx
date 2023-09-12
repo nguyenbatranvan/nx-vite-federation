@@ -1,28 +1,20 @@
-// import {Route, Routes, Link, BrowserRouter} from 'react-router-dom';
-import {Button} from "@mantine/core";
 import React from "react";
 import {BrowserRouter, Link, Navigate, Route, Routes} from "react-router-dom";
 import {MantineWrap} from "@module-fd/shared/mantine-wrapper";
-import {useCounter} from "remoteShared/Hooks";
 import {CustomButton} from "@module-fd/shared/custom-components";
-import {useBearStore} from "shared-state";
+import {useBearStore} from "@module-fd/shared/state";
 
 export function AppHost() {
-  const {bears, increasePopulation} = useCounter();
-  const {count} = useBearStore()
+  const {count, reset} = useBearStore()
 
   return (
     <MantineWrap>
       {/*<NxWelcome title="remote"/>*/}
-      <h1>Remote app , bears is {bears}</h1>
-      <h1>
-        Remote app, count is {count}
+      <h1 onClick={reset}>
+        Remote app, count is hehe {count}
       </h1>
-      <Button onClick={increasePopulation}>
-        Set Counter Remote
-      </Button>
       <CustomButton>
-        my custom button
+        my custom button223
       </CustomButton>
 
       <BrowserRouter>

@@ -16,7 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@module-fd/mantine-wrap": ["libs/mantine-wrap/src/index.ts"],
       "@module-fd/shared/custom-components": [
         "libs/shared/custom-components/src/index.ts"
       ],

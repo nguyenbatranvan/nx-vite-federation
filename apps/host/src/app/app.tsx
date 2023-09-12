@@ -3,8 +3,7 @@ import {Link, Route, Routes} from "react-router-dom";
 import React from "react";
 import {Box, Button} from "@mantine/core";
 import loadable from "@loadable/component";
-import {useCounter} from "remoteShared/Hooks";
-import {useBearStore} from "shared-state";
+import {useBearStore} from "@module-fd/shared/state";
 
 
 const AppHost = loadable(() => import("remoteApp/AppHost"), {
@@ -13,7 +12,6 @@ const AppHost = loadable(() => import("remoteApp/AppHost"), {
 
 export function App() {
   const {count, increasePopulation: changeCount} = useBearStore()
-  const {bears, increasePopulation} = useCounter();
   return (<>
       <div role="navigation">
         <h1>Count: {count}</h1>
@@ -32,9 +30,6 @@ export function App() {
           </li>
         </ul>
       </div>
-      <Button onClick={increasePopulation}>
-        Button Host {bears}
-      </Button>
 
       <Routes>
         <Route path={"hi/*"} element={
