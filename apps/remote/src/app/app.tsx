@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {BrowserRouter, Link, Navigate, Route, Routes} from "react-router-dom";
 import {MantineWrap} from "@module-fd/shared/mantine-wrapper";
 import {CustomButton} from "@module-fd/shared/custom-components";
 import {useBearStore} from "@module-fd/shared/state";
+import cloneDeep from "lodash/cloneDeep";
 
 export function AppHost() {
   const {count, reset} = useBearStore()
-
+  useEffect(() => {
+    console.log(cloneDeep({}))
+  }, []);
   return (
     <MantineWrap>
       {/*<NxWelcome title="remote"/>*/}
@@ -22,7 +25,7 @@ export function AppHost() {
         <div role="navigation">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">Home..</Link>
             </li>
             <li>
               <Link to="page-2">Page 2</Link>
@@ -46,7 +49,7 @@ export function AppHost() {
             path="page-2"
             element={
               <div>
-                <Link to="/">Click here to go back to root page.</Link>
+                <Link to="/">Click here to go back to root page.....</Link>
               </div>
             }
           />

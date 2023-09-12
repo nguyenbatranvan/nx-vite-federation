@@ -1,9 +1,10 @@
 import {ErrorBoundary} from "react-error-boundary";
 import {Link, Route, Routes} from "react-router-dom";
-import React from "react";
+import React, {useEffect} from "react";
 import {Box, Button} from "@mantine/core";
 import loadable from "@loadable/component";
 import {useBearStore} from "@module-fd/shared/state";
+import cloneDeep from "lodash/cloneDeep";
 
 
 const AppHost = loadable(() => import("remoteApp/AppHost"), {
@@ -12,11 +13,14 @@ const AppHost = loadable(() => import("remoteApp/AppHost"), {
 
 export function App() {
   const {count, increasePopulation: changeCount} = useBearStore()
+  useEffect(() => {
+    console.log(cloneDeep({}))
+  }, []);
   return (<>
       <div role="navigation">
         <h1>Count: {count}</h1>
         <Button onClick={changeCount}>
-          Change Count
+          Change Count 2223323233
         </Button>
         <ul>
           <li>
