@@ -55,7 +55,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/remote"],
+      "outputs": ["{workspaceRoot}/coverage/apps/remote"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/remote"

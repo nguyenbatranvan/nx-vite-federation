@@ -4,6 +4,8 @@ import React from "react";
 import {Box, Button} from "@mantine/core";
 import loadable from "@loadable/component";
 import {useBearStore} from "@module-fd/shared/state";
+import {CustomButton} from "@module-fd/shared/custom-components";
+import {testUtil} from "@share-core/utils";
 
 
 const AppHost = loadable(() => import("remoteApp/AppHost"), {
@@ -18,6 +20,9 @@ export function App() {
   return (<>
       <div role="navigation">
         <h1>Count: {count}</h1>
+        <CustomButton onClick={testUtil}>
+          Button Host
+        </CustomButton>
         <Button onClick={changeCount}>
           Change Count
         </Button>

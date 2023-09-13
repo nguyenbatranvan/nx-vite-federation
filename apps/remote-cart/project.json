@@ -55,7 +55,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/apps/remote-cart"],
+      "outputs": ["{workspaceRoot}/coverage/apps/remote-cart"],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/remote-cart"
