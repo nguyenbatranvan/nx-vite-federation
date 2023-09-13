@@ -1,0 +1,3 @@
+[submodule "share-core"]
+	path = share-core
+	url = https://github.com/nguyenbatranvan/share-core

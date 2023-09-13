@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@module-fd/shared/custom-components": [
+        "libs/shared/custom-components/src/index.ts"
+      ],
+      "@module-fd/shared/custom-theme": [
+        "libs/shared/custom-theme/src/index.ts"
+      ],
+      "@module-fd/shared/mantine-wrapper": [
+        "libs/shared/mantine-wrapper/src/index.ts"
+      ],
+      "@module-fd/shared/models": ["libs/shared/models/src/index.ts"],
+      "@module-fd/shared/state": ["libs/shared/state/src/index.ts"],
+      "@module-fd/shared/utils": ["libs/shared/utils/src/index.ts"]
+    },
+    "typeRoots": ["./types", "./node_modules/@types", "./node_modules"],
+    "types": []
+  },
+  "exclude": ["node_modules", "tmp"]
+}
