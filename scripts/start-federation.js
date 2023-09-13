@@ -46,7 +46,7 @@ let cmd = 'npm';
 if (process.platform === 'win32') {
   cmd = 'npm.cmd';    // https://github.com/nodejs/node/issues/3675
 }
-const {remotes, app} = args
+const {remotes, app='host'} = args
 // const target = args['t'] || 'serve';
 const target = 'preview';
 if (!app) {
